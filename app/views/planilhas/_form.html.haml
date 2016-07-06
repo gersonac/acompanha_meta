@@ -1,0 +1,19 @@
+= form_for @planilha do |f|
+  - if @planilha.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@planilha.errors.count, "error")} prohibited this planilha from being saved:"
+      %ul
+        - @planilha.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .field
+    = f.label :meta
+    = f.text_field :meta
+  .field
+    = f.label :year
+    = f.text_field :year
+  .actions
+    = f.submit 'Save'

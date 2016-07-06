@@ -1,0 +1,23 @@
+%h1 Listing planilhas
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Meta
+      %th
+      %th
+      %th
+
+  %tbody
+    - @planilhas.each do |planilha|
+      %tr
+        %td= planilha.user_id
+        %td= planilha.meta
+        %td= link_to 'Show', planilha
+        %td= link_to 'Edit', edit_planilha_path(planilha)
+        %td= link_to 'Destroy', planilha, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Planilha', new_planilha_path

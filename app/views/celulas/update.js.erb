@@ -1,0 +1,3 @@
+$("#<%= @celula.id %>").html($("<%= escape_javascript( render partial: 'celula', locals: { celula: @celula } ) %>"))
+
+$("#month_<%= @celula.month %>").html($('<div><%= escape_javascript( @celula.planilha.celulas_total(@celula.month).to_s ) %></div>'))

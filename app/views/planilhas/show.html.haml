@@ -1,0 +1,45 @@
+%div
+  %p#notice= notice
+
+= hidden_field(:cell, :select)
+
+.totals
+  .column
+    .metas Metas
+  - @planilha.metas.each do |meta|
+    .column
+      .metas{ :id => "m_#{meta.id}" }= render partial: 'metas/meta', locals: { meta: meta }
+
+.totals
+  .column
+    %h4.header Dias/Meses
+    - (1..31).each do |day|
+      .days= day
+
+  - (1..12).each do |month|
+    .column
+      %h4.header= month
+      = render partial: 'show_column', locals: { celulas: @planilha.celulas_order(month) }
+
+.totals
+  .column
+    .days Totais
+
+  - (1..12).each do |month|
+    .column
+      %h4.days{ :id => "month_#{month}" }= @planilha.celulas_total(month)
+
+.bottom
+  %span
+    = link_to 'Edit', edit_planilha_path(@planilha)
+  %span
+    = link_to 'Back', planilhas_path
+  %span
+    %b User:
+    = @planilha.user_id
+  %span
+    %b Meta:
+    = @planilha.meta
+  %span
+    %b Ano:
+    = @planilha.year
