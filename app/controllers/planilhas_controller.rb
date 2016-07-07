@@ -4,7 +4,7 @@ class PlanilhasController < ApplicationController
   # GET /planilhas
   # GET /planilhas.json
   def index
-    @planilhas = Planilha.all
+    @planilhas = Planilha.year_order
   end
 
   # GET /planilhas/1

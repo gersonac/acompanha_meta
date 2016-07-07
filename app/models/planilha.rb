@@ -7,6 +7,8 @@ class Planilha < ActiveRecord::Base
 
   validates_presence_of :meta
 
+  scope :year_order, -> { order(:year) }
+
   def montar
     montar_metas
 

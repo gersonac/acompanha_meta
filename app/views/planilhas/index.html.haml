@@ -1,23 +1,17 @@
-%h1 Listing planilhas
+%div
+  %span
+    %h1
+      Planilhas
+      = link_to content_tag(:i, nil, class: "fa fa-plus-square"), new_planilha_path
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Meta
-      %th
-      %th
-      %th
-
-  %tbody
-    - @planilhas.each do |planilha|
-      %tr
-        %td= planilha.user_id
-        %td= planilha.meta
-        %td= link_to 'Show', planilha
-        %td= link_to 'Edit', edit_planilha_path(planilha)
-        %td= link_to 'Destroy', planilha, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Planilha', new_planilha_path
+- @planilhas.each do |planilha|
+  %div
+    .planilha
+      %h2= planilha.year
+      %div
+        Meta:
+        = planilha.meta
+      %hr
+      %span= link_to content_tag(:i, nil, class: "fa fa-sticky-note-o fa-lg"), planilha
+      %span= link_to content_tag(:i, nil, class: "fa fa-pencil-square-o fa-lg"), edit_planilha_path(planilha)
+      %span= link_to content_tag(:i, nil, class: "fa fa-times fa-lg"), planilha, :method => :delete, :data => { :confirm => 'Are you sure?' }

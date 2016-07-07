@@ -1,5 +1,14 @@
-%div
-  %p#notice= notice
+%h1.bottom
+  %span
+    %b Ano:
+    = @planilha.year
+  %span
+    %b Meta:
+    = @planilha.meta
+  /%span= link_to content_tag(:i, nil, class: "fa fa-pencil-square-o"), edit_planilha_path(@planilha)
+  %span= link_to content_tag(:i, nil, class: "fa fa-arrow-circle-left"), planilhas_path
+  %span
+    %p#notice= notice
 
 = hidden_field(:cell, :select)
 
@@ -28,18 +37,3 @@
   - (1..12).each do |month|
     .column
       %h4.days{ :id => "month_#{month}" }= @planilha.celulas_total(month)
-
-.bottom
-  %span
-    = link_to 'Edit', edit_planilha_path(@planilha)
-  %span
-    = link_to 'Back', planilhas_path
-  %span
-    %b User:
-    = @planilha.user_id
-  %span
-    %b Meta:
-    = @planilha.meta
-  %span
-    %b Ano:
-    = @planilha.year
